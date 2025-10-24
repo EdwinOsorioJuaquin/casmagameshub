@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="28" fill="#0b0f19"/>
+  <g transform="translate(0,6)">
+    <!-- cuerpo -->
+    <rect x="96" y="86" width="64" height="82" rx="8" fill="#d2a679" stroke="#0b0f19" stroke-width="3"/>
+    <!-- falda -->
+    <rect x="96" y="160" width="64" height="20" rx="6" fill="#94a3b8" stroke="#0b0f19" stroke-width="3"/>
+    <!-- piernas -->
+    <rect x="100" y="178" width="24" height="30" rx="6" fill="#cfa275" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="132" y="178" width="24" height="30" rx="6" fill="#cfa275" stroke="#0b0f19" stroke-width="3"/>
+    <!-- cabeza -->
+    <rect x="110" y="54" width="36" height="36" rx="8" fill="#e0b48c" stroke="#0b0f19" stroke-width="3"/>
+    <!-- tocado serpentiforme verde/amarillo -->
+    <path d="M148,48c22,6 22,28 4,36l-10,4" fill="none" stroke="#22c55e" stroke-width="10" stroke-linecap="round"/>
+    <path d="M148,48c-8,6 -8,18 2,26" fill="none" stroke="#eab308" stroke-width="6" stroke-linecap="round"/>
+    <!-- brazo + maza -->
+    <rect x="154" y="98" width="12" height="28" rx="6" fill="#d2a679" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="160" y="70" width="14" height="40" rx="4" fill="#4f86f7" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="156" y="60" width="22" height="14" rx="4" fill="#82a7ff" stroke="#0b0f19" stroke-width="3"/>
+    <!-- cinturón máscara -->
+    <rect x="118" y="142" width="20" height="12" rx="4" fill="#eab308" stroke="#0b0f19" stroke-width="3"/>
+    <!-- ojos/boca -->
+    <rect x="122" y="66" width="6" height="4" rx="1" fill="#0b0f19"/>
+    <rect x="134" y="66" width="6" height="4" rx="1" fill="#0b0f19"/>
+    <rect x="124" y="78" width="16" height="4" rx="2" fill="#0b0f19"/>
+  </g>
+</svg>

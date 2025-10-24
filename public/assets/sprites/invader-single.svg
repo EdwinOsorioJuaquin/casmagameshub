@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="28" fill="#0b0f19"/>
+  <g transform="translate(0,6)">
+    <!-- cuerpo -->
+    <rect x="96" y="86" width="64" height="82" rx="8" fill="#c6a07a" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="96" y="160" width="64" height="20" rx="6" fill="#9aa1ab" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="100" y="178" width="24" height="30" rx="6" fill="#c2986f" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="132" y="178" width="24" height="30" rx="6" fill="#c2986f" stroke="#0b0f19" stroke-width="3"/>
+    <!-- cabeza + casco -->
+    <rect x="110" y="54" width="36" height="36" rx="8" fill="#d7ad86" stroke="#0b0f19" stroke-width="3"/>
+    <rect x="108" y="48" width="40" height="16" rx="4" fill="#991b1b" stroke="#0b0f19" stroke-width="3"/>
+    <circle cx="116" cy="56" r="3.5" fill="#fef08a"/>
+    <circle cx="128" cy="56" r="3.5" fill="#fef08a"/>
+    <circle cx="140" cy="56" r="3.5" fill="#fef08a"/>
+    <!-- garrote triangular -->
+    <rect x="160" y="76" width="12" height="38" rx="4" fill="#b45309" stroke="#0b0f19" stroke-width="3"/>
+    <polygon points="172,66 188,84 160,84" fill="#f59e0b" stroke="#0b0f19" stroke-width="3"/>
+    <!-- ojos/boca -->
+    <rect x="122" y="66" width="6" height="4" rx="1" fill="#0b0f19"/>
+    <rect x="134" y="66" width="6" height="4" rx="1" fill="#0b0f19"/>
+    <rect x="124" y="78" width="16" height="4" rx="2" fill="#0b0f19"/>
+  </g>
+</svg>
