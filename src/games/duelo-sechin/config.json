@@ -1,0 +1,46 @@
+{
+  "game": {
+    "name": "Duelo Sechín",
+    "version": "1.0.0",
+    "description": "Juego de lucha 2D inspirado en los guerreros de la cultura Sechín"
+  },
+  "graphics": {
+    "resolution": {
+      "width": 800,
+      "height": 450
+    },
+    "quality": "high",
+    "particles": true,
+    "shadows": true
+  },
+  "physics": {
+    "gravity": 0.8,
+    "friction": 0.85,
+    "knockbackMultiplier": 0.5
+  },
+  "combat": {
+    "baseDamage": {
+      "light": 12,
+      "heavy": 20,
+      "combo": 25
+    },
+    "hitStun": 10,
+    "blockReduction": 0.7
+  },
+  "ai": {
+    "difficulty": {
+      "easy": {
+        "reactionTime": 60,
+        "accuracy": 0.3
+      },
+      "medium": {
+        "reactionTime": 40,
+        "accuracy": 0.6
+      },
+      "hard": {
+        "reactionTime": 20,
+        "accuracy": 0.85
+      }
+    }
+  }
+}

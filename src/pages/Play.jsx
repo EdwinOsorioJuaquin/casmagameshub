@@ -1,48 +1,77 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getGameById } from '../games'
-import { storage } from '../games/core/Storage'
+import { ArrowLeft } from 'lucide-react'
+import { getGameById } from '../games/index.js' // 👈 Ahora esta función existe
 
-export default function Play(){
-  const { gameId } = useParams()
-  const nav = useNavigate()
-  const ref = useRef(null)
-  const [game, setGame] = useState(null)
-  const [meta, setMeta] = useState(null)
+const Play = () => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const game = getGameById(id)
 
-  useEffect(()=>{
-    const m = getGameById(gameId)
-    setMeta(m)
-    if(!m) return
-    let instance
-    m.loader().then(GameClass => {
-      instance = new GameClass()
-      instance.init(ref.current, {
-        save: (data)=> storage.set(`games.${gameId}.save`, data),
-        onEvent: (ev)=> console.log('event', ev)
-      })
-      setGame(instance)
-    })
-    return ()=> { instance?.destroy() }
-  }, [gameId])
-
-  useEffect(()=>{
-    const onResize = ()=> game?.resize(ref.current.clientWidth, ref.current.clientHeight)
-    window.addEventListener('resize', onResize)
-    return ()=> window.removeEventListener('resize', onResize)
-  }, [game])
-
-  return (
-    <div className="min-h-screen bg-neutral-900 text-neutral-50">
-      <div className="p-3 flex items-center gap-2 border-b border-white/10">
-        <button onClick={()=> nav('/')} className="px-3 py-2 rounded-lg border border-white/10">Salir</button>
-        <button onClick={()=> game?.pause()} className="px-3 py-2 rounded-lg border border-white/10">Pausa</button>
-        <button onClick={()=> game?.resume()} className="px-3 py-2 rounded-lg border border-white/10">Reanudar</button>
-        <div className="ml-auto flex items-center gap-3 text-sm text-neutral-400">
-          {meta && (<><img src={meta.logo} className="h-6 w-6 rounded"/> <span>{meta.title}</span></>)}
+  // Si el juego no existe, mostrar error
+  if (!game) {
+    return (
+      <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-400 mb-4">Juego no encontrado</h1>
+          <button 
+            onClick={() => navigate('/')}
+            className="px-4 py-2 bg-emerald-500 rounded-lg hover:bg-emerald-400 transition"
+          >
+            Volver al Inicio
+          </button>
         </div>
       </div>
-      <div ref={ref} className="w-full h-[calc(100vh-56px)]" />
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-neutral-900 text-white">
+      {/* Header */}
+      <div className="bg-neutral-800 border-b border-white/10 p-4">
+        <div className="max-w-7xl mx-auto flex items-center gap-4">
+          <button 
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/5 transition"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Volver al Hub
+          </button>
+          <h1 className="text-2xl font-bold text-emerald-400">{game.title}</h1>
+        </div>
+      </div>
+
+      {/* Contenido del juego */}
+      <div className="max-w-4xl mx-auto p-6">
+        <div className="bg-neutral-800 rounded-xl border border-white/10 p-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">¡{game.title} en Desarrollo!</h2>
+          <p className="text-neutral-300 mb-6">
+            Este juego está siendo desarrollado con las mejores tecnologías web.
+          </p>
+          
+          {/* Información del juego */}
+          <div className="bg-neutral-700 rounded-lg p-6 mb-6">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <img src={game.logo} alt={game.title} className="w-16 h-16 rounded-xl" />
+              <div className="text-left">
+                <h3 className="text-xl font-bold">{game.title}</h3>
+                <p className="text-neutral-400">{game.type}</p>
+                <p className="text-sm text-neutral-500">Dificultad: {game.difficulty}</p>
+              </div>
+            </div>
+            <p className="text-neutral-300">{game.blurb}</p>
+          </div>
+
+          <button 
+            onClick={() => navigate('/')}
+            className="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-neutral-900 font-semibold rounded-xl transition"
+          >
+            Volver al Menú Principal
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
+
+export default Play

@@ -1,16 +1,39 @@
 export class InputManager {
-constructor(bindings){
-this.bindings = bindings || {
-left: ['ArrowLeft','KeyA'], right: ['ArrowRight','KeyD'], up: ['ArrowUp','KeyW'], down: ['ArrowDown','KeyS'], jump: ['Space'], action: ['KeyF']
-}
-this.state = new Map()
-this._down = this._down.bind(this)
-this._up = this._up.bind(this)
-}
-attach(){ window.addEventListener('keydown', this._down); window.addEventListener('keyup', this._up) }
-detach(){ window.removeEventListener('keydown', this._down); window.removeEventListener('keyup', this._up) }
-_down(e){ this._set(e.code,true) }
-_up(e){ this._set(e.code,false) }
-_set(code,v){ for(const [name,keys] of Object.entries(this.bindings)){ if(keys.includes(code)) this.state.set(name,v) } }
-pressed(name){ return !!this.state.get(name) }
+  constructor() {
+    this.keys = new Map();
+    this.mouse = { x: 0, y: 0, pressed: false };
+    this.setupEventListeners();
+  }
+
+  setupEventListeners() {
+    document.addEventListener('keydown', (e) => {
+      this.keys.set(e.code, true);
+    });
+
+    document.addEventListener('keyup', (e) => {
+      this.keys.set(e.code, false);
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = document.querySelector('canvas').getBoundingClientRect();
+      this.mouse.x = e.clientX - rect.left;
+      this.mouse.y = e.clientY - rect.top;
+    });
+
+    document.addEventListener('mousedown', () => {
+      this.mouse.pressed = true;
+    });
+
+    document.addEventListener('mouseup', () => {
+      this.mouse.pressed = false;
+    });
+  }
+
+  isPressed(key) {
+    return this.keys.get(key) || false;
+  }
+
+  getMousePosition() {
+    return { ...this.mouse };
+  }
 }
